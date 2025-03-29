@@ -50,6 +50,12 @@ const Navigation = () => {
                                 <span>Settings</span>
                             </Link>
                         </li>
+                        <li className="nav-item px-3">
+                            <Link href='/counter' className="nav-link d-flex flex-column align-items-center">
+                                <i className="bi bi-123"></i>
+                                <span>Counter</span>
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>
