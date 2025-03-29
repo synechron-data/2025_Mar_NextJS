@@ -14,7 +14,7 @@ export default function Settings() {
           <div className="col-lg-12">
             <div className="card main-card shadow-sm mb-4">
               <div className="card-header text-white">
-                <h4 className="mb-0">Application Settings</h4>
+                <h4 className="mb-0 text-primary">Application Settings</h4>
               </div>
               <div className="card-body">
                 <div className="row">

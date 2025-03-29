@@ -139,3 +139,7 @@
 .settingsContainer :global(.card:has(.btn-outline-secondary):hover) {
   border-left: 4px solid #6c757d;
 }
+
+.settingsContainer :global(.text-primary) {
+  color: aqua !important;
+}
