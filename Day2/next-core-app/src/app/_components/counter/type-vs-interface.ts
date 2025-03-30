@@ -21,21 +21,21 @@
 
 // -------------------------------
 
-class Control {
-    focus(): string {
-        return "The control is in focus";
-    }
-}
+// class Control {
+//     focus(): string {
+//         return "The control is in focus";
+//     }
+// }
 
-class SelectableControl {
-    select(): string {
-        return "The control is selected";
-    }
-}
+// class SelectableControl {
+//     select(): string {
+//         return "The control is selected";
+//     }
+// }
 
-class Button { }
-interface Button extends Control, SelectableControl { }
+// class Button { }
+// interface Button extends Control, SelectableControl { }
 
-const button = new Button();
-console.log(button.focus);
-console.log(button.select);
+// const button = new Button();
+// console.log(button.focus);
+// console.log(button.select);

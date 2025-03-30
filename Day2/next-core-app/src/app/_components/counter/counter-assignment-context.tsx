@@ -70,29 +70,29 @@ const useCounter = () => {
 
 const Counter: React.FC<CounterProps> = ({ interval = 1 }) => {
     const { state, dispatch } = useCounter();
-    let clickCount = useRef<number>(0);
+    const clickCount = useRef<number>(0);
 
     const manageClickCount = useCallback(() => {
         clickCount.current++;
         if (clickCount.current > 9) {
             dispatch({ type: 'SETFLAG', payload: true });
         }
-    }, []);
+    }, [dispatch]);
 
     const inc = useCallback(() => {
         dispatch({ type: 'INCREMENT', payload: interval });
         manageClickCount();
-    }, [interval, manageClickCount]);
+    }, [interval, manageClickCount, dispatch]);
 
     const dec = useCallback(() => {
         dispatch({ type: 'DECREMENT', payload: interval });
         manageClickCount();
-    }, [interval, manageClickCount]);
+    }, [interval, manageClickCount, dispatch]);
 
     const reset = useCallback(() => {
         dispatch({ type: 'RESET' });
         clickCount.current = 0;
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className="card shadow-sm border-0 rounded-4 mb-4">
@@ -120,8 +120,8 @@ const Counter: React.FC<CounterProps> = ({ interval = 1 }) => {
     );
 }
 
-const CounterSibling: React.FC<CounterProps> = ({ interval = 1 }) => {
-    const { state, dispatch } = useCounter();
+const CounterSibling: React.FC = () => {
+    const { state } = useCounter();
 
     return (
         <div className="card shadow-sm border-0 rounded-4 mb-4">
@@ -153,7 +153,8 @@ interface CounterInteractionProps {
     flag: boolean
 }
 
-const CounterInteraction: React.FC<CounterInteractionProps> = React.memo(function ({ inc, dec, reset, flag }) {
+const CounterInteraction: React.FC<CounterInteractionProps> = React.memo(function CounterInteraction({ inc, dec, reset, flag }) {
+    
     console.log("Counter Interaction Rendered....");
 
     return (

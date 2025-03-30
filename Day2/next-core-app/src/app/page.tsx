@@ -35,7 +35,7 @@ export default function Home() {
                 <i className="bi bi-collection"></i>
               </div>
               <h2 className="h4 fw-bold">Responsive Design</h2>
-              <p>Looks great on any device, whether it's a phone, tablet, or desktop.</p>
+              <p>Looks great on any device, whether it`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`s a phone, tablet, or desktop.</p>
               <Link href="/responsive" className="text-decoration-none">
                 Learn more
                 <i className="bi bi-arrow-right ms-2"></i>
@@ -57,7 +57,7 @@ export default function Home() {
                 <i className="bi bi-toggles2"></i>
               </div>
               <h2 className="h4 fw-bold">Easy to Customize</h2>
-              <p>Easily customize components with Bootstrap's extensive utility classes.</p>
+              <p>Easily customize components with Bootstrap`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`s extensive utility classes.</p>
               <Link href="/customize" className="text-decoration-none">
                 Learn more
                 <i className="bi bi-arrow-right ms-2"></i>

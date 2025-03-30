@@ -66,7 +66,7 @@ interface CounterDisplayProps {
     count: number;
 }
 
-const CounterDisplay = React.forwardRef<HTMLInputElement, CounterDisplayProps>(({ count }, ref) => {
+const CounterDisplay = React.forwardRef<HTMLInputElement, CounterDisplayProps>(function CounterDisplay({ count }, ref) {
     return (
         <div className="input-group input-group-lg">
             <span className="input-group-text bg-light">Current Value</span>
@@ -84,31 +84,31 @@ const CounterDisplay = React.forwardRef<HTMLInputElement, CounterDisplayProps>((
 
 const Counter: React.FC<CounterProps> = ({ interval = 1 }) => {
     const { state, dispatch } = useCounter();
-    let clickCount = useRef<number>(0);
-    let inputRef = useRef<HTMLInputElement>(null);
+    const clickCount = useRef<number>(0);
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const manageClickCount = useCallback(() => {
         clickCount.current++;
         if (clickCount.current > 9) {
             dispatch({ type: 'SETFLAG', payload: true });
         }
-    }, []);
+    }, [dispatch]);
 
     const inc = useCallback(() => {
         dispatch({ type: 'INCREMENT', payload: interval });
         manageClickCount();
-    }, [interval, manageClickCount]);
+    }, [interval, manageClickCount,dispatch]);
 
     const dec = useCallback(() => {
         dispatch({ type: 'DECREMENT', payload: interval });
         manageClickCount();
-    }, [interval, manageClickCount]);
+    }, [interval, manageClickCount,dispatch]);
 
     const reset = useCallback(() => {
         dispatch({ type: 'RESET' });
         clickCount.current = 0;
         inputRef.current?.focus();
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className="card shadow-sm border-0 rounded-4 mb-4">
@@ -133,7 +133,7 @@ interface CounterInteractionProps {
     flag: boolean
 }
 
-const CounterInteraction: React.FC<CounterInteractionProps> = React.memo(function ({ inc, dec, reset, flag }) {
+const CounterInteraction: React.FC<CounterInteractionProps> = React.memo(function CounterInteraction({ inc, dec, reset, flag }) {
     console.log("Counter Interaction Rendered....");
 
     return (

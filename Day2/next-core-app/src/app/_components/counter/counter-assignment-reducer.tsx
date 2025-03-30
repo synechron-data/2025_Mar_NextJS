@@ -39,7 +39,7 @@ const counterReducer = (state: CounterState, action: CounterAction): CounterStat
 
 const Counter: React.FC<CounterProps> = ({ interval = 1 }) => {
     const [state, dispatch] = useReducer(counterReducer, initialState);
-    let clickCount = useRef<number>(0);
+    const clickCount = useRef<number>(0);
 
     const manageClickCount = useCallback(() => {
         clickCount.current++;
@@ -96,7 +96,7 @@ interface CounterInteractionProps {
     flag: boolean
 }
 
-const CounterInteraction: React.FC<CounterInteractionProps> = React.memo(function ({ inc, dec, reset, flag }) {
+const CounterInteraction: React.FC<CounterInteractionProps> = React.memo(function CounterInteraction({ inc, dec, reset, flag }) {
     console.log("Counter Interaction Rendered....");
 
     return (

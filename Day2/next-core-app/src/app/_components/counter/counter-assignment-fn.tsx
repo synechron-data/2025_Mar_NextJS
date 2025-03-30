@@ -10,7 +10,7 @@ const Counter: React.FC<CounterProps> = ({ interval = 1 }) => {
     const [count, setCount] = useState<number>(0);
     const [flag, setFlag] = useState<boolean>(false);
 
-    let clickCount = useRef<number>(0);
+    const clickCount = useRef<number>(0);
     // console.log(`Counter Function Executed... ${count}`);
 
     const manageClickCount = () => {

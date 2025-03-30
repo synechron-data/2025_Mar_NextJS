@@ -10,7 +10,7 @@ const Counter: React.FC<CounterProps> = ({ interval = 1 }) => {
     const [count, setCount] = useState<number>(0);
     const [flag, setFlag] = useState<boolean>(false);
 
-    let clickCount = useRef<number>(0);
+    const clickCount = useRef<number>(0);
     // console.log(`Counter Function Executed... ${count}`);
 
     const manageClickCount = useCallback(() => {
@@ -69,7 +69,7 @@ interface CounterInteractionProps {
     flag: boolean
 }
 
-const CounterInteraction: React.FC<CounterInteractionProps> = React.memo(function ({ inc, dec, reset, flag }) {
+const CounterInteraction: React.FC<CounterInteractionProps> = React.memo(function CounterInteraction({ inc, dec, reset, flag }) {
     console.log("Counter Interaction Rendered....");
 
     return (

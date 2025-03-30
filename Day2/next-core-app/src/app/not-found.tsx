@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function NotFound() {
     return (
-        <div className="container d-flex flex-column justify-content-center align-items-center vh-100">
+        <div className="container d-flex flex-column align-items-center vh-100 mt-5">
             <div className="card text-center shadow-lg border-0" style={{ maxWidth: "500px" }}>
                 <div className="card-header bg-primary text-white">
                     <i className="bi bi-question-circle-fill fs-1 my-3"></i>
