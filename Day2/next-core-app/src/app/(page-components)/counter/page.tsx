@@ -3,7 +3,8 @@ import styles from './conference.module.css';
 // import CounterAssignment from "@/app/_components/counter/counter-assignment";
 // import CounterAssignment from "@/app/_components/counter/counter-assignment-fn";
 // import CounterAssignment from "@/app/_components/counter/counter-assignment-fn-o";
-import CounterAssignment from "@/app/_components/counter/counter-assignment-reducer";
+// import CounterAssignment from "@/app/_components/counter/counter-assignment-reducer";
+import CounterAssignment from "@/app/_components/counter/counter-assignment-context";
 
 export const metadata:Metadata = {
   title: "Counter Page",

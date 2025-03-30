@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useCallback, useReducer, useRef } from "react";
+import React, { useCallback, useContext, useReducer, useRef } from "react";
 
 interface CounterProps {
     interval?: number;
@@ -37,8 +37,33 @@ const counterReducer = (state: CounterState, action: CounterAction): CounterStat
     }
 }
 
-const Counter: React.FC<CounterProps> = ({ interval = 1 }) => {
+// 1. Create the Context
+const CounterContext = React.createContext<{
+    state: CounterState;
+    dispatch: React.Dispatch<CounterAction>;
+} | undefined>(undefined);
+
+// 2. Create the Provider Component
+const CounterContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [state, dispatch] = useReducer(counterReducer, initialState);
+    return (
+        <CounterContext.Provider value={{ state, dispatch }}>
+            {children}
+        </CounterContext.Provider>
+    );
+}
+
+// 3. Create the Consumer (Custom Hook)
+const useCounter = () => {
+    const context = useContext(CounterContext);
+    if (context === undefined) {
+        throw new Error('useCounter Hook must be used within the CounterContextProvider');
+    }
+    return context;
+}
+
+const Counter: React.FC<CounterProps> = ({ interval = 1 }) => {
+    const { state, dispatch } = useCounter();
     let clickCount = useRef<number>(0);
 
     const manageClickCount = useCallback(() => {
@@ -89,6 +114,32 @@ const Counter: React.FC<CounterProps> = ({ interval = 1 }) => {
     );
 }
 
+const CounterSibling: React.FC<CounterProps> = ({ interval = 1 }) => {
+    const { state, dispatch } = useCounter();
+
+    return (
+        <div className="card shadow-sm border-0 rounded-4 mb-4">
+            <div className="card-header text-center py-3" style={{ background: 'linear-gradient(135deg,rgb(240, 13, 17),rgb(253, 13, 125))' }}>
+                <h3 className="m-0 text-white fw-bold">Counter Sibling Component</h3>
+            </div>
+            <div className="card-body p-4">
+                <div className="d-flex flex-column gap-3">
+                    <div className="input-group input-group-lg">
+                        <span className="input-group-text bg-light">Current Value</span>
+                        <input
+                            type="text"
+                            className="form-control form-control-lg text-center"
+                            aria-label="Counter value"
+                            value={state.count}
+                            readOnly
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 interface CounterInteractionProps {
     inc: () => void;
     dec: () => void;
@@ -128,8 +179,10 @@ const CounterAssignment = () => {
         <div className="container py-5">
             <div className="row justify-content-center">
                 <div className="col-lg-6 col-md-8">
-                    <Counter />
-                    <Counter interval={10} />
+                    <CounterContextProvider>
+                        <Counter />
+                        <CounterSibling />
+                    </CounterContextProvider>
                 </div>
             </div>
         </div>
