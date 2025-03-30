@@ -11,17 +11,11 @@ interface CounterState {
     flag: boolean;
 }
 
-type CounterAction = { type: 'INCREMENT'; payload: number }
+type CounterAction =
+    | { type: 'INCREMENT'; payload: number }
     | { type: 'DECREMENT'; payload: number }
     | { type: 'RESET' }
     | { type: 'SETFLAG'; payload: boolean };
-
-// Common Formatting 
-// type CounterAction =
-//     | { type: 'INCREMENT'; payload: number }
-//     | { type: 'DECREMENT'; payload: number }
-//     | { type: 'RESET' }
-//     | { type: 'SETFLAG'; payload: boolean };
 
 const initialState: CounterState = {
     count: 0,
@@ -68,9 +62,30 @@ const useCounter = () => {
     return context;
 }
 
+interface CounterDisplayProps {
+    count: number;
+}
+
+const CounterDisplay: React.FC<CounterDisplayProps> = React.forwardRef<HTMLInputElement, CounterDisplayProps>(({ count }, ref) => {
+    return (
+        <div className="input-group input-group-lg">
+            <span className="input-group-text bg-light">Current Value</span>
+            <input
+                type="text"
+                className="form-control form-control-lg text-center"
+                aria-label="Counter value"
+                value={count}
+                readOnly
+                ref={ref}
+            />
+        </div>
+    );
+});
+
 const Counter: React.FC<CounterProps> = ({ interval = 1 }) => {
     const { state, dispatch } = useCounter();
     let clickCount = useRef<number>(0);
+    let inputRef = useRef<HTMLInputElement>(null);
 
     const manageClickCount = useCallback(() => {
         clickCount.current++;
@@ -92,6 +107,7 @@ const Counter: React.FC<CounterProps> = ({ interval = 1 }) => {
     const reset = useCallback(() => {
         dispatch({ type: 'RESET' });
         clickCount.current = 0;
+        inputRef.current?.focus();
     }, []);
 
     return (
@@ -102,44 +118,8 @@ const Counter: React.FC<CounterProps> = ({ interval = 1 }) => {
             </div>
             <div className="card-body p-4">
                 <div className="d-flex flex-column gap-3">
-                    <div className="input-group input-group-lg">
-                        <span className="input-group-text bg-light">Current Value</span>
-                        <input
-                            type="text"
-                            className="form-control form-control-lg text-center"
-                            aria-label="Counter value"
-                            value={state.count}
-                            readOnly
-                        />
-                    </div>
-
+                    <CounterDisplay count={state.count} ref={inputRef} />
                     <CounterInteraction inc={inc} dec={dec} reset={reset} flag={state.flag} />
-                </div>
-            </div>
-        </div>
-    );
-}
-
-const CounterSibling: React.FC<CounterProps> = ({ interval = 1 }) => {
-    const { state, dispatch } = useCounter();
-
-    return (
-        <div className="card shadow-sm border-0 rounded-4 mb-4">
-            <div className="card-header text-center py-3" style={{ background: 'linear-gradient(135deg,rgb(240, 13, 17),rgb(253, 13, 125))' }}>
-                <h3 className="m-0 text-white fw-bold">Counter Sibling Component</h3>
-            </div>
-            <div className="card-body p-4">
-                <div className="d-flex flex-column gap-3">
-                    <div className="input-group input-group-lg">
-                        <span className="input-group-text bg-light">Current Value</span>
-                        <input
-                            type="text"
-                            className="form-control form-control-lg text-center"
-                            aria-label="Counter value"
-                            value={state.count}
-                            readOnly
-                        />
-                    </div>
                 </div>
             </div>
         </div>
@@ -187,7 +167,6 @@ const CounterAssignment = () => {
                 <div className="col-lg-6 col-md-8">
                     <CounterContextProvider>
                         <Counter />
-                        <CounterSibling />
                     </CounterContextProvider>
                 </div>
             </div>
