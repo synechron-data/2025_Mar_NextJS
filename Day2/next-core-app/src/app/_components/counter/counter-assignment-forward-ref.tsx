@@ -66,7 +66,7 @@ interface CounterDisplayProps {
     count: number;
 }
 
-const CounterDisplay: React.FC<CounterDisplayProps> = React.forwardRef<HTMLInputElement, CounterDisplayProps>(({ count }, ref) => {
+const CounterDisplay = React.forwardRef<HTMLInputElement, CounterDisplayProps>(({ count }, ref) => {
     return (
         <div className="input-group input-group-lg">
             <span className="input-group-text bg-light">Current Value</span>
