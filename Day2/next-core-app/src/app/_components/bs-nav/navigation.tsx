@@ -9,7 +9,7 @@ const Navigation = () => {
     useEffect(() => {
         // Bootstarp JS depends on document API, which will be avialable on client browser
         // So we have to load the bootstrap js only on the client side
-        // require('bootstrap/dist/js/bootstrap.bundle.min.js');
+        // require('bootstrap');
 
         import('bootstrap')
         .then(() => {

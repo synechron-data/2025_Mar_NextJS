@@ -153,7 +153,7 @@ interface CounterInteractionProps {
     flag: boolean
 }
 
-const CounterInteraction: React.FC<CounterInteractionProps> = React.memo(function CounterInteraction({ inc, dec, reset, flag }) {
+const CounterInteraction: React.FC<CounterInteractionProps> = React.memo(({ inc, dec, reset, flag }) => {
     
     console.log("Counter Interaction Rendered....");
 
@@ -180,6 +180,8 @@ const CounterInteraction: React.FC<CounterInteractionProps> = React.memo(functio
         </>
     );
 });
+
+CounterInteraction.displayName = "CounterInteraction";
 
 const CounterAssignment = () => {
     return (
