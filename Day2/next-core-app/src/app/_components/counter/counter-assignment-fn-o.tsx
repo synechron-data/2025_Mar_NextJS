@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 
 interface CounterProps {
     interval?: number;
@@ -13,28 +13,28 @@ const Counter: React.FC<CounterProps> = ({ interval = 1 }) => {
     let clickCount = useRef<number>(0);
     // console.log(`Counter Function Executed... ${count}`);
 
-    const manageClickCount = () => {
+    const manageClickCount = useCallback(() => {
         clickCount.current++;
         if (clickCount.current > 9) {
             setFlag(true);
         }
-    }
+    }, []);
 
-    const inc = () => {
+    const inc = useCallback(() => {
         setCount((prevCount) => prevCount + interval);
         manageClickCount();
-    }
+    }, [interval, manageClickCount]);
 
-    const dec = () => {
+    const dec = useCallback(() => {
         setCount((prevCount) => prevCount - interval);
         manageClickCount();
-    }
+    }, [interval, manageClickCount]);
 
-    const reset = () => {
+    const reset = useCallback(() => {
         setCount(0);
         setFlag(false);
         clickCount.current = 0;
-    }
+    }, []);
 
     return (
         <div className="card shadow-sm border-0 rounded-4 mb-4">
@@ -69,7 +69,9 @@ interface CounterInteractionProps {
     flag: boolean
 }
 
-const CounterInteraction: React.FC<CounterInteractionProps> = function ({ inc, dec, reset, flag }) {
+const CounterInteraction: React.FC<CounterInteractionProps> = React.memo(function ({ inc, dec, reset, flag }) {
+    console.log("Counter Interaction Rendered....");
+
     return (
         <>
             <div className="d-flex gap-2">
@@ -92,7 +94,7 @@ const CounterInteraction: React.FC<CounterInteractionProps> = function ({ inc, d
             </button>
         </>
     );
-}
+});
 
 const CounterAssignment = () => {
     return (
