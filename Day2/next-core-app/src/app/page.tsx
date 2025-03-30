@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-  // throw new Error("This is a Server Error");
+  throw new Error("This is a Server Error");
   return (
     <>
       <header className="bg-light py-5">
