@@ -5577,5 +5577,13 @@
       "day": "Thursday",
       "id": "814b1f5e-e6df-440b-a91c-df198b5bbed2"
     }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "designation": "Software Engineer",
+      "salary": 10000
+    }
   ]
 }
