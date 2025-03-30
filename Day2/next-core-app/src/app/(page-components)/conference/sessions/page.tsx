@@ -7,7 +7,7 @@ async function fetchSessions() {
     // Fetch sessions from a File
     // Fetch sessions from a API call
     const url = process.env.SESSIONS_API_URL;
-    const response = await fetch(url!);
+    const response = await fetch(url!, { cache: 'no-store' });
     const sessions: Array<Session> = await response.json();
     return sessions;
 }
@@ -20,7 +20,7 @@ export default async function Sessions() {
             <div>
                 Last Rendered: {new Date().toLocaleTimeString()}
             </div>
-            
+
             <h1>Welcome to Technizer India Sessions</h1>
             {
                 sessions &&

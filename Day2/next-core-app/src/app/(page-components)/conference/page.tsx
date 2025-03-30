@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import styles from './conference.module.css';
 import Image from "next/image";
-// import Link from "next/link";
+import Link from "next/link";
 
 import conferenceImage from "../../images/home-image-1.jpg";
 
@@ -27,20 +27,20 @@ export default function Conference() {
       </div>
       <h1 className={styles.bgHeader}>Welcome to Techinzer India Conference</h1>
       <h2 className={styles.bgText}>
-        {/* <Link className={styles.bgLinks} href="/conference/speakers">
+        <Link className={styles.bgLinks} href="/conference/speakers">
           View Speakers
-        </Link> */}
-        <a className={styles.bgLinks} href="/conference/speakers">
+        </Link>
+        {/* <a className={styles.bgLinks} href="/conference/speakers">
           View Speakers
-        </a>
+        </a> */}
       </h2>
       <h2 className={styles.bgText}>
-        {/* <Link className={styles.bgLinks} href="/conference/sessions">
+        <Link className={styles.bgLinks} href="/conference/sessions">
           View Sessions
-        </Link> */}
-        <a className={styles.bgLinks} href="/conference/sessions">
+        </Link>
+        {/* <a className={styles.bgLinks} href="/conference/sessions">
           View Sessions
-        </a>
+        </a> */}
       </h2>
     </main>
   );
