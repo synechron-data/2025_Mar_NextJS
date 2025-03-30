@@ -10,7 +10,6 @@ export const metadata:Metadata = {
 export default function Counter() {
   return (
     <div>
-        <h1>Counter Assignment</h1>
         <CounterAssignment />
     </div>
   );
