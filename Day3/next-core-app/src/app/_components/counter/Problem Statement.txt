@@ -1,0 +1,24 @@
+Create a React component that functions as a counter with increment and decrement capabilities. 
+The component should manage its state according to specific rules and handle user interactions as outlined below.
+
+Requirements
+1. Initial State:
+    The component should have three buttons: +, -, and Reset.
+        a. When the component loads, the + and - buttons should be enabled.
+        b. The Reset button should be disabled.
+        c. The counter should start at 0.
+        d. The counter should have an interval of 1 by default, unless an interval prop is provided.
+
+2. Button Functionality:
+    a. Clicking the + button should increase the counter by the specified interval.
+    b. Clicking the - button should decrease the counter by the specified interval.
+
+3. Click Limit:
+    a. After a total of 10 clicks on either the + or - buttons, both buttons should be disabled.
+    b. The Reset button should then be enabled.
+
+4. Reset Functionality:
+    Clicking the Reset button should reinitialize the component to its initial state:
+        a. The count should reset to 0.
+        b. The + and - buttons should be enabled.
+        c. The Reset button should be disabled.
