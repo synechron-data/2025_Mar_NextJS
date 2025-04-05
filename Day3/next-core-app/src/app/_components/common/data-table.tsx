@@ -3,6 +3,7 @@ import React from 'react';
 interface DataTableProps<T> {
     items: T[];
     children?: React.ReactNode;
+    onSelect?: (item: T, allowEdit: boolean) => void;
 }
 
 const Th = <T extends {}>({ item }: { item: T }) => {
@@ -19,7 +20,12 @@ const Th = <T extends {}>({ item }: { item: T }) => {
     );
 }
 
-const Tr = <T extends {}>({ item }: { item: T }) => {
+interface TrProps<T> {
+    item: T;
+    onSelect?: (item: T, allowEdit: boolean) => void;
+};
+
+const Tr = <T extends { id: number | string }>({ item, onSelect }: TrProps<T>) => {
     const renderCells = () => {
         const values = Object.values(item) as (string | number)[];
         return values.map((value, index) => <td key={index}>{value}</td>);
@@ -29,10 +35,16 @@ const Tr = <T extends {}>({ item }: { item: T }) => {
         <tr>
             {renderCells()}
             <td>
-                <a href="/#" className="text-primary">Details</a>
+                <a href="/#" className="text-primary" onClick={(e) => {
+                    e.preventDefault();
+                    onSelect && onSelect(item, false);
+                }}>Details</a>
             </td>
             <td>
-                <a href="/#" className="text-warning">Edit</a>
+                <a href="/#" className="text-warning" onClick={(e) => {
+                    e.preventDefault();
+                    onSelect && onSelect(item, true);
+                }}>Edit</a>
             </td>
             <td>
                 <a href="/#" className="text-danger">Delete</a>
@@ -41,14 +53,14 @@ const Tr = <T extends {}>({ item }: { item: T }) => {
     );
 }
 
-const DataTable = <T extends { id: number | string }>({ items, children }: DataTableProps<T>) => {
+const DataTable = <T extends { id: number | string }>({ items, children, onSelect }: DataTableProps<T>) => {
     let headers = null;
     let rows = null;
 
     if (items && items.length !== 0) {
         headers = items.length > 0 ? <Th item={items[0]} /> : null;
         rows = items.map((item) => (
-            <Tr key={item.id} item={item} />
+            <Tr key={item.id} item={item} onSelect={onSelect} />
         ));
     }
 

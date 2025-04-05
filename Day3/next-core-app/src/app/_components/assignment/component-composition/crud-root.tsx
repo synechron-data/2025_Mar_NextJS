@@ -8,6 +8,8 @@ import { Employee } from '../models/employee';
 const CrudRootComponent: React.FC = () => {
     const [employees, setEmployees] = useState<Employee[]>([]);
     const [employee, setEmployee] = useState<Employee>({ id: 1, name: "", designation: "", salary: 0 });
+    const [edit, setEdit] = useState<boolean>(false);
+    const [formDisabled, setFormDisabled] = useState<boolean>(false);
 
     const changeEmployee = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         const field = e.target.id;
@@ -30,12 +32,25 @@ const CrudRootComponent: React.FC = () => {
         setEmployee({ id: getNextId(tempEmployees), name: "", designation: "", salary: 0 });
     }, [employees, employee]);
 
+    const selectEmployee = useCallback((item: Employee, allowEdit: boolean) => {
+        if (allowEdit) {
+            setEmployee({ ...item });
+            setEdit(true);
+            setFormDisabled(false);
+        } else {
+            setEmployee({ ...item });
+            setEdit(false);
+            setFormDisabled(true);
+        }
+    }, []);
+
     return (
         <div className="mt-3">
             <FormComponent employee={employee} changeEmployee={changeEmployee}
-                saveEmployee={saveEmployee} />
+                saveEmployee={saveEmployee}
+                disabled={formDisabled} />
             <hr />
-            <DataTable items={employees}>
+            <DataTable items={employees} onSelect={selectEmployee}>
                 <h5 className="text-primary text-uppercase font-weight-bold">Employees Table</h5>
             </DataTable>
         </div>

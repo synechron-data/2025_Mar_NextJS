@@ -6,6 +6,7 @@ interface FormComponentProps {
     employee: Employee;
     changeEmployee: (e: React.ChangeEvent<HTMLInputElement>) => void;
     saveEmployee: () => void;
+    disabled: boolean;
 }
 
 const FormComponent: React.FC<FormComponentProps> = (props) => {
@@ -16,7 +17,7 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
                     e.preventDefault();
                     props.saveEmployee();
                 }}>
-                    <fieldset>
+                    <fieldset disabled={props.disabled}>
                         <legend className="text-center text-secondary text-uppercase font-weight-bold">Add/Edit Employee Information</legend>
                         <hr className="mt-0" />
 
