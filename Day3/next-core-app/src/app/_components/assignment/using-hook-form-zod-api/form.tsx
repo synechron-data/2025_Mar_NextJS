@@ -67,16 +67,3 @@ const FormComponent: React.FC<FormComponentProps> = ({ employee, saveEmployee, r
 }
 
 export default FormComponent;
-
-// const schemaOne = z.object({
-//     fname: z.string(),
-//     lname: z.string(),
-// })
-
-// const schemaTwo = z.object({
-//     id: z.string(),
-//     salary: z.string(),
-// })
-
-// // const comSchema = schemaOne.merge(schemaTwo)
-// const intSchema = schemaOne.and(schemaTwo)

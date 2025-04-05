@@ -10,3 +10,13 @@ export const employeeSchema = z.object({
 });
 
 export type Employee = z.infer<typeof employeeSchema>;
+
+export const addressSchema = z.object({
+    street: z.string().min(1, { message: 'Street is required' })
+});
+
+export const exployeeWithAddressSchema = employeeSchema.extend({
+    address: addressSchema
+});
+
+export type EmployeeWithAddress = z.infer<typeof exployeeWithAddressSchema>;
