@@ -3,7 +3,7 @@ import styles from './conference.module.css';
 import Image from "next/image";
 import Link from "next/link";
 
-import conferenceImage from "../../images/home-image-1.jpg";
+import conferenceImage from "../../images/media-image-1.jpg";
 
 export const metadata: Metadata = {
   title: "Conference Page",
