@@ -1,0 +1,3 @@
+SESSIONS_API_URL=http://localhost:8001/sessions
+SPEAKERS_API_URL=http://localhost:8001/speakers
+NEXT_PUBLIC_SPEAKERS_API_URL=http://localhost:8001/speakers
