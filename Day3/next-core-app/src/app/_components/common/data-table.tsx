@@ -4,6 +4,7 @@ interface DataTableProps<T> {
     items: T[];
     children?: React.ReactNode;
     onSelect?: (item: T, allowEdit: boolean) => void;
+    onDelete?: (id: number | string) => void;
 }
 
 const Th = <T extends {}>({ item }: { item: T }) => {
@@ -23,9 +24,10 @@ const Th = <T extends {}>({ item }: { item: T }) => {
 interface TrProps<T> {
     item: T;
     onSelect?: (item: T, allowEdit: boolean) => void;
+    onDelete?: (id: number | string) => void;
 };
 
-const Tr = <T extends { id: number | string }>({ item, onSelect }: TrProps<T>) => {
+const Tr = <T extends { id: number | string }>({ item, onSelect, onDelete }: TrProps<T>) => {
     const renderCells = () => {
         const values = Object.values(item) as (string | number)[];
         return values.map((value, index) => <td key={index}>{value}</td>);
@@ -47,20 +49,23 @@ const Tr = <T extends { id: number | string }>({ item, onSelect }: TrProps<T>) =
                 }}>Edit</a>
             </td>
             <td>
-                <a href="/#" className="text-danger">Delete</a>
+                <a href="/#" className="text-danger" onClick={(e) => {
+                    e.preventDefault();
+                    onDelete && onDelete(item.id);
+                }}>Delete</a>
             </td>
         </tr>
     );
 }
 
-const DataTable = <T extends { id: number | string }>({ items, children, onSelect }: DataTableProps<T>) => {
+const DataTable = <T extends { id: number | string }>({ items, children, onSelect, onDelete }: DataTableProps<T>) => {
     let headers = null;
     let rows = null;
 
     if (items && items.length !== 0) {
         headers = items.length > 0 ? <Th item={items[0]} /> : null;
         rows = items.map((item) => (
-            <Tr key={item.id} item={item} onSelect={onSelect} />
+            <Tr key={item.id} item={item} onSelect={onSelect} onDelete={onDelete} />
         ));
     }
 
