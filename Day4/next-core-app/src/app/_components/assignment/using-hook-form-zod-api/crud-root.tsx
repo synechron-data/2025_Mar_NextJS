@@ -37,6 +37,7 @@ const CrudRootComponent: React.FC = () => {
     }, [employees, getNextId]);
 
     const saveEmployee = useCallback(async (data: Employee) => {
+        debugger;
         if (edit) {
             const updatedEmployee = await updateEmployee(data);
             const itemIndex = employees.findIndex((item) => item.id === updatedEmployee.id);

@@ -56,7 +56,7 @@ const FormComponent: React.FC<FormComponentProps> = ({ employee, saveEmployee, r
                                 <button type="submit" className="btn btn-success w-100">Save</button>
                             </div>
                             <div className="col-md-6">
-                                <button type="reset" className="btn btn-primary w-100" onClick={resetEmployee}>Reset</button>
+                                <button type="button" className="btn btn-primary w-100" onClick={resetEmployee}>Reset</button>
                             </div>
                         </div>
                     </fieldset>
