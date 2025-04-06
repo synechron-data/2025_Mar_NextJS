@@ -71,6 +71,12 @@ const Navigation = () => {
                                 <span>Assignment</span>
                             </Link>
                         </li>
+                        <li className="nav-item px-3">
+                            <Link href='/chat' className="nav-link d-flex flex-column align-items-center">
+                                <i className="bi bi-file-earmark"></i>
+                                <span>Chat</span>
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>
