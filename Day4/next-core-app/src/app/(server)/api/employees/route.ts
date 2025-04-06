@@ -26,7 +26,7 @@ async function handlePostEmployee(req: Request) {
         const requestData = await req.json();
         const employee = employeeSchema.parse(requestData);
         const insertedEmployee = await employeeDAO.createEmployee(employee);
-        return Response.json(insertedEmployee, { status: 200 });
+        return Response.json(insertedEmployee, { status: 201 });
     } catch (err) {
         return Response.json({ message: 'Failed to get employees', error: err }, { status: 500 });
     }
