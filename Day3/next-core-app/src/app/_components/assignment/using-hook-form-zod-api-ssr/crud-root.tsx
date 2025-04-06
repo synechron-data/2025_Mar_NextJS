@@ -11,7 +11,6 @@ interface CrudRootComponentProps {
     data: Employee[];
 }
 
-
 const CrudRootComponent: React.FC<CrudRootComponentProps> = ({ data }) => {
     const [employees, setEmployees] = useState<Employee[]>(data);
     const [employee, setEmployee] = useState<Employee>({ id: 1, name: "", designation: "", salary: 0 });
