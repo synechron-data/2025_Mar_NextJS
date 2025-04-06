@@ -1,5 +1,5 @@
 import { Employee, employeeSchema } from "@/app/models/employee";
-import { readData } from "../utilities/file-handler";
+import { readData, writeData } from "../utilities/file-handler";
 
 let employees: Array<Employee> = [];
 
@@ -23,6 +23,20 @@ const getEmployees = (): Promise<Array<Employee>> => {
     });
 }
 
+const createEmployee = (employeeToInsert: Employee): Promise<Employee | undefined> => {
+    return new Promise(async (resolve, reject) => {
+        employees.push(employeeToInsert);
+        try {
+            const data = await writeData(employees);
+            employees = data.map(e => employeeSchema.parse(e));
+            resolve(employees.find((e) => e.id === employeeToInsert.id));
+        } catch (err) {
+            reject(`Failed to insert employee: ${err}`);
+        }
+    });
+}
+
 export const employeeDAO = {
-    getEmployees
+    getEmployees,
+    createEmployee
 };
