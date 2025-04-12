@@ -3,6 +3,7 @@ import logo from '../../images/logo.png';
 import Image from 'next/image';
 import { auth, signOut } from '@/auth';
 import BootstrapClientWrapper from './bootstrap-client-wrapper';
+// import LogoutButton from './logout-button';
 
 const Navigation = async () => {
     const session = await auth();
@@ -59,6 +60,7 @@ const Navigation = async () => {
                                             </button>
                                         </li>
                                     </form>
+                                    // <LogoutButton />
                                 ) : (
                                     <li className="nav-item px-3">
                                         <Link href='/login' className="nav-link d-flex flex-column align-items-center">
