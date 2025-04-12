@@ -1,1 +1,8 @@
+SESSIONS_API_URL=http://localhost:8001/sessions
+SPEAKERS_API_URL=http://localhost:8001/speakers
+
+NEXT_PUBLIC_SPEAKERS_API_URL=http://localhost:8001/speakers
+
 NEXT_PUBLIC_EMPLOYEES_API_URL=/api/employees
+
+AUTH_SECRET=K24bmq3jZzJK7nq+h+ESc2O0olOI+E2aBfLi7Jdl0Kk=

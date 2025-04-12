@@ -37,6 +37,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
                     } else {
                         const passwordMatch = user.password === password;
                         if (passwordMatch) {
+                            // eslint-disable-next-line @typescript-eslint/no-unused-vars
                             const { password, ...userWithoutPassword } = user;
                             return userWithoutPassword;
                         }

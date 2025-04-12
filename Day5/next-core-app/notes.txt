@@ -1,0 +1,20 @@
+For PM2
+    npm i -g pm2
+    npm run build
+    pm2 start server.js --name "next-core-app" --env production
+    pm2 list
+    pm2 stop next-core-app
+    pm2 delete next-core-app
+
+    If using ecosystem file
+        Create ecosystem.config.js
+        pm2 start ecosystem.config.js --env production
+
+For Docker
+    Create the Dockerfile
+    
+    Change next.config.mjs file to use
+        output: 'standalone'
+
+    docker build -t techedge/mynext-app ./
+    docker run -d -p 3000:3000 techedge/mynext-app
