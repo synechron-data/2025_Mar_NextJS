@@ -1,4 +1,4 @@
-// This code will not work for websocket communication
+// This code will not work for websocket communication (Not Required)
 
 import WebSocket, { WebSocketServer } from 'ws';
 import { IncomingMessage, ServerResponse } from 'http';

@@ -1,0 +1,145 @@
+/* Settings.module.css */
+/* Custom styling that overrides Bootstrap only for the settings page */
+
+/* Main container card styles */
+.settingsContainer :global(.card.main-card) {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Individual setting card styles */
+.settingsContainer :global(.card:not(.main-card)) {
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.settingsContainer :global(.card:not(.main-card):hover) {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.settingsContainer :global(.card-header) {
+  background: linear-gradient(135deg, #343a40 0%, #212529 100%);
+  border-radius: 12px 12px 0 0 !important;
+  border-bottom: none;
+  padding: 1.2rem 1.5rem;
+}
+
+.settingsContainer :global(.card-title) {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.settingsContainer :global(.card-body) {
+  padding: 1.8rem;
+}
+
+.settingsContainer :global(.card-footer) {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0 0 12px 12px !important;
+  padding: 1rem 1.5rem;
+}
+
+.settingsContainer :global(.btn) {
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
+
+.settingsContainer :global(.btn-primary) {
+  background: linear-gradient(to right, #0d6efd, #0a58ca);
+  border: none;
+}
+
+.settingsContainer :global(.btn-primary:hover) {
+  background: linear-gradient(to right, #0a58ca, #084298);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.25);
+}
+
+/* Fix for outline buttons - preserve Bootstrap's default hover behavior */
+.settingsContainer :global(.btn-outline-primary:hover) {
+  color: white;
+  background-color: #0d6efd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(13, 110, 253, 0.25);
+}
+
+.settingsContainer :global(.btn-outline-danger:hover) {
+  color: white;
+  background-color: #dc3545;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.25);
+}
+
+.settingsContainer :global(.btn-outline-warning:hover) {
+  color: black;
+  background-color: #ffc107;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 193, 7, 0.25);
+}
+
+.settingsContainer :global(.btn-outline-success:hover) {
+  color: white;
+  background-color: #198754;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(25, 135, 84, 0.25);
+}
+
+.settingsContainer :global(.btn-outline-info:hover) {
+  color: black;
+  background-color: #0dcaf0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(13, 202, 240, 0.25);
+}
+
+.settingsContainer :global(.btn-outline-secondary:hover) {
+  color: white;
+  background-color: #6c757d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.25);
+}
+
+.settingsContainer :global(.text-muted) {
+  color: #6c757d !important;
+}
+
+.settingsContainer :global(.bi) {
+  font-size: 1.25rem;
+}
+
+/* Custom card hover effects */
+.settingsContainer :global(.card:has(.btn-outline-primary):hover) {
+  border-left: 4px solid #0d6efd;
+}
+
+.settingsContainer :global(.card:has(.btn-outline-danger):hover) {
+  border-left: 4px solid #dc3545;
+}
+
+.settingsContainer :global(.card:has(.btn-outline-warning):hover) {
+  border-left: 4px solid #ffc107;
+}
+
+.settingsContainer :global(.card:has(.btn-outline-success):hover) {
+  border-left: 4px solid #198754;
+}
+
+.settingsContainer :global(.card:has(.btn-outline-info):hover) {
+  border-left: 4px solid #0dcaf0;
+}
+
+.settingsContainer :global(.card:has(.btn-outline-secondary):hover) {
+  border-left: 4px solid #6c757d;
+}
+
+.settingsContainer :global(.text-primary) {
+  color: aqua !important;
+}
