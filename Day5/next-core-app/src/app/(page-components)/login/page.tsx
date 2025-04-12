@@ -1,4 +1,5 @@
 'use client'
+import { authenticate } from "@/app/(server)/lib/actions";
 import FormInput from "@/app/_components/common/form-input";
 import LoadingButton from "@/app/_components/common/loading-button";
 import { LoginUserSchema, loginUserSchema } from "@/app/schemas/login-user-schema";
@@ -26,18 +27,17 @@ export default function Login() {
         formData.append('email', values.email);
         formData.append('password', values.password);
 
-        // const result = await authenticate(formData);
+        const result = await authenticate(formData);
 
-        // setTimeout(() => setSubmitting(false), 3000); 
-        // setSubmitting(false);
+        setSubmitting(false);
 
-        // if (result.error) {
-        //     toast.error(result.error);
-        //     reset({ password: '' });
-        // } else {
-        //     toast.success('Logged in successfully');
-        //     router.push('/');
-        // }
+        if (result.error) {
+            toast.error(result.error);
+            reset({ password: '' });
+        } else {
+            toast.success('Logged in successfully');
+            router.push('/');
+        }
     };
 
     const onSubmitHandler: SubmitHandler<LoginUserSchema> = (values) => {
