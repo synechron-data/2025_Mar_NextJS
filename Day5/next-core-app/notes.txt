@@ -11,6 +11,9 @@ For PM2
         pm2 start ecosystem.config.js --env production
 
 For Docker
+    On Windows OS, install Docker Desktop application and in running node_modules
+    https://docs.docker.com/desktop/setup/install/windows-install/
+    
     Create the Dockerfile
     
     Change next.config.mjs file to use
