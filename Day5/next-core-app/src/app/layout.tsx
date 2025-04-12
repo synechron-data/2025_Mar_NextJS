@@ -5,6 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
 
 import Navigation from "./_components/bs-nav/navigation";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,8 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Navigation />
-        {children}
+        <header>
+          <Navigation />
+        </header>
+        <div>
+          {children}
+          <Toaster />
+        </div>
       </body>
     </html>
   );
