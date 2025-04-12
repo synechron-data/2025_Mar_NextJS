@@ -5,7 +5,10 @@ import { CredentialsSignin } from "next-auth";
 
 export async function authenticate(formData: FormData) {
     try {
-        await signIn('', {});
+        await signIn('credentials', {
+            redirect: false,
+            ...Object.fromEntries(formData.entries()),
+        });
         return { success: true };
     } catch (error) {
         console.log("Error ------------------", error);
